@@ -2,6 +2,7 @@ import sha3
 import requests
 import json
 import rlp
+import os
 from sha3 import keccak_256
 from decimal import Decimal, getcontext
 
@@ -51,7 +52,7 @@ def generate_mermaid(decoded_nodes, hash_nodes):
         mermaid_code += f'style Node{i} fill:{colors[i%len(colors)]}\n'
     return mermaid_code
 
-node_rpc = 'https://eth-mainnet.g.alchemy.com/v2/[API_KEY]'
+node_rpc = os.getenv("node_rpc")
 eth_address = "0x54aee16C9EFeF4580EA7bC2A713bB24E12675d5d"
 block_height = 18985133
 address = bytes.fromhex(eth_address[2:])
